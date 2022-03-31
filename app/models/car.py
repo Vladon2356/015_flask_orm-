@@ -8,10 +8,10 @@ class CarModel(base):
     __tablename__ = "cars"
     id = Column(Integer, primary_key=True)
     brand = Column(String(50), nullable=False)
-    model = Column(String(30), nullable=False)
+    model = Column(String(30), nullable=False, server_default='')
     price = Column(Integer, nullable=False)
     owner = relationship("OwnerModel", back_populates='cars')
-    owner_id = Column(Integer, ForeignKey('owners.id'),nullable=True)
+    owner_id = Column(Integer, ForeignKey('owners.id'), nullable=True)
 
     @classmethod
     def find_by_id(cls, id, to_dict=True):
